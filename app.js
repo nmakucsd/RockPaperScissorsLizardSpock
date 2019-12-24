@@ -22,6 +22,15 @@ const scissors_div = document.getElementById("s");
 const lizard_div = document.getElementById("l");
 const spock_div = document.getElementById("sp");
 
+function getComputerChoice() {
+    const choices = ['r', 'p', 's', 'l', 'sp'];
+    const randomNumber = Math.floor(Math.random() * 5); 
+    //Math.random produces random number between 0 and 1 (*5 for 0 and 5)
+    //Math.floor rounds to lower whole number 1.923 -> 1
+    return choices[randomNumber];
+}
+
+console.log(getComputerChoice());
 
 function game(userChoice) {
     console.log(" poop    " + userChoice);
