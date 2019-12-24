@@ -1,5 +1,5 @@
-const userScore = 0;
-const compScore = 0;
+let userScore = 0;
+let compScore = 0;
 
 
 //cache the DOM
@@ -15,12 +15,15 @@ const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
 
 const scoreBoard_div = document.querySelector(".score-board");
-const result_div = document.querySelector(".result");
+const result_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const lizard_div = document.getElementById("l");
 const spock_div = document.getElementById("sp");
+
+
+
 
 function getCompChoice() {
     const choices = ['r', 'p', 's', 'l', 'sp'];
@@ -28,6 +31,49 @@ function getCompChoice() {
     //Math.random produces random number between 0 and 1 (*5 for 0 and 5)
     //Math.floor rounds to lower whole number 1.923 -> 1
     return choices[randomNumber];
+}
+
+
+function convertToWord(letter) {
+    if (letter === "r") return "Rock";
+    if (letter === "p") return "Paper";
+    if (letter === "s") return "Scissors";
+    if (letter === "l") return "Lizard";
+    if (letter === "sp") return "Spock";
+}
+
+
+
+function win(u, c){
+    userScore++;
+    console.log("win");
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = compScore;
+    //this is CS5 version
+    //result_p.innerHTML = convertToWord(u) + " beats " + convertToWord(c) + ". you win!";
+    //this is CS6 version
+    result_p.innerHTML = `${convertToWord(u)} beats ${convertToWord(c)}. you win!`;
+}
+
+function lose(u, c){
+    compScore++;
+    console.log("lose");
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = compScore;
+    //this is CS5 version
+    //result_p.innerHTML = convertToWord(u) + " loses to " + convertToWord(c) + ". you lose!";
+    //this is CS6 version
+    result_p.innerHTML = `${convertToWord(u)} loses to ${convertToWord(c)}. you lose!`;
+}
+
+function draw(u){
+    console.log("draw");
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = compScore;
+    //this is CS5 version
+    //result_p.innerHTML = "You both picked " + convertToWord(u) + ". Draw!";
+    //this is CS6 version
+    result_p.innerHTML = `You both picked ${convertToWord(u)}. Draw!`;
 }
 
 
@@ -46,7 +92,7 @@ function game(userChoice) {
         case "p-sp":
         case "sp-r":
         case "r-s":
-            console.log("USER WINS.");
+            win(userChoice, compChoice);
             break;  
         case "p-s":
         case "r-s":
@@ -58,14 +104,14 @@ function game(userChoice) {
         case "sp-p":
         case "r-sp":
         case "s-r":
-            console.log("USER LOSES.");
-            break;
+            lose(userChoice, compChoice);
+            break; 
         case "s-s":
         case "p-p":
         case "r-r":
         case "l-l":
         case "sp-sp":
-            console.log("Its a draw.");
+            draw(userChoice);
             break;
     }
 
