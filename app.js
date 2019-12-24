@@ -22,27 +22,40 @@ const scissors_div = document.getElementById("s");
 const lizard_div = document.getElementById("l");
 const spock_div = document.getElementById("sp");
 
+
+function game(userChoice) {
+    console.log(" poop    " + userChoice);
+}
+
+
+
 //what happens when you click a button
 //take value
 //compare to computer's choice
 //check who wins
 //display result in DOM
-rock_div.addEventListener('click', function() {
-    console.log("hey you clicked on rock");
-})
 
-paper_div.addEventListener('click', function() {
-    console.log("hey you clicked on paper");
-})
+function main() {
+    rock_div.addEventListener('click', function() {
+        game("r");
+    })
 
-scissors_div.addEventListener('click', function() {
-    console.log("hey you clicked on scissors");
-})
+    paper_div.addEventListener('click', function() {
+        game("p");
+    })
 
-lizard_div.addEventListener('click', function() {
-    console.log("hey you clicked on lizard");
-})
+    scissors_div.addEventListener('click', function() {
+        game("s");
+    })
 
-spock_div.addEventListener('click', function() {
-    console.log("hey you clicked on spock");
-})
+    lizard_div.addEventListener('click', function() {
+        game("l");
+    })
+
+    spock_div.addEventListener('click', function() {
+        game("sp"); 
+    })
+
+}
+
+main();
