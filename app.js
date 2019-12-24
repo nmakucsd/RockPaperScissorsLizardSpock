@@ -12,7 +12,7 @@ const compScore = 0;
 //dom variables? underscore
 //you also know what time of element it is (span tag)
 const userScore_span = document.getElementById("user-score");
-const compSCore_span = document.getElementById("comp-score");
+const compScore_span = document.getElementById("comp-score");
 
 const scoreBoard_div = document.querySelector(".score-board");
 const result_div = document.querySelector(".result");
@@ -22,7 +22,7 @@ const scissors_div = document.getElementById("s");
 const lizard_div = document.getElementById("l");
 const spock_div = document.getElementById("sp");
 
-function getComputerChoice() {
+function getCompChoice() {
     const choices = ['r', 'p', 's', 'l', 'sp'];
     const randomNumber = Math.floor(Math.random() * 5); 
     //Math.random produces random number between 0 and 1 (*5 for 0 and 5)
@@ -30,10 +30,45 @@ function getComputerChoice() {
     return choices[randomNumber];
 }
 
-console.log(getComputerChoice());
+
 
 function game(userChoice) {
-    console.log(" poop    " + userChoice);
+    const compChoice = getCompChoice();
+    
+    switch (userChoice + "-" + compChoice) {
+        case "s-p":
+        case "p-r":
+        case "r-l":
+        case "l-sp":
+        case "sp-s":
+        case "s-l":
+        case "l-p":
+        case "p-sp":
+        case "sp-r":
+        case "r-s":
+            console.log("USER WINS.");
+            break;  
+        case "p-s":
+        case "r-s":
+        case "l-r":
+        case "sp-l":
+        case "s-sp":
+        case "l-s":
+        case "p-l":
+        case "sp-p":
+        case "r-sp":
+        case "s-r":
+            console.log("USER LOSES.");
+            break;
+        case "s-s":
+        case "p-p":
+        case "r-r":
+        case "l-l":
+        case "sp-sp":
+            console.log("Its a draw.");
+            break;
+    }
+
 }
 
 
