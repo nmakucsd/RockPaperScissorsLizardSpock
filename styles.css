@@ -100,23 +100,16 @@ header > h1 {
     background: #24272E;
 }
 
-.action-message {
+.rules {
     text-align: center;
     color: white;
     font-family: Asap, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    margin-top: 20px;
+    line-height: 3ch;
+    margin: 100px auto;
 }
 
-.action-message > ul{
-    text-align: center;
-    color: white;
-    font-family: Asap, sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 20px
-}
 
 
 
