@@ -82,7 +82,10 @@ function win(u, c){
     //this is ES5 version
     //result_p.innerHTML = convertToWord(u) + " beats " + convertToWord(c) + ". you win!";
     //this is ES6 version
-    result_p.innerHTML = `${convertToWord(u)} beats ${convertToWord(c)}. you win!`;
+    // result_p.innerHTML = `${convertToWord(u)} beats ${convertToWord(c)}. you win!`;
+
+
+    getResultText(u,c);
     
     //this adds the green glow when win event happens
     u_div.classList.add('green-glow');
@@ -95,9 +98,6 @@ function win(u, c){
 
 
 
-// setTimeout(function() {
-//             console.log("hello")
-//             }, 1000);
 
 
 
@@ -128,8 +128,11 @@ function lose(u, c){
     //this is ES5 version
     //result_p.innerHTML = convertToWord(u) + " loses to " + convertToWord(c) + ". you lose!";
     //this is ES6 version
-    result_p.innerHTML = `${convertToWord(u)} loses to ${convertToWord(c)}. you lose!`;
+    //result_p.innerHTML = `${convertToWord(u)} loses to ${convertToWord(c)}. you lose!`;
     
+
+    getResultText(u,c);
+
     //this adds the red glow when lose event happens
     u_div.classList.add('red-glow');
     //this gives the red glow for 1000ms (1s)
@@ -167,8 +170,10 @@ function draw(u){
     //this is CS5 version
     //result_p.innerHTML = "You both picked " + convertToWord(u) + ". Draw!";
     //this is CS6 version
-    result_p.innerHTML = `You both picked ${convertToWord(u)}. Draw!`;
+    //result_p.innerHTML = `You both picked ${convertToWord(u)}. Draw!`;
     
+    getResultText(u,u);
+
     //this adds the grey glow when win event happens
     u_div.classList.add('grey-glow');
 
@@ -185,6 +190,65 @@ function draw(u){
 
 
 
+
+function getResultText(u, c){
+
+    switch (u + "-" + c) {
+        //user win cases
+        case "s-p": result_p.innerHTML = `Scissors cut paper. You Win!`;
+            break;
+        case "p-r": result_p.innerHTML = `Paper covers rock. You Win!`;
+            break;
+        case "r-l": result_p.innerHTML = `Rock crushes lizard. You Win!`;
+            break;
+        case "l-sp": result_p.innerHTML = `Lizard poisons Spock. You Win!`;
+            break;
+        case "sp-s": result_p.innerHTML = `Spock smashes Scissors. You Win!`;
+            break;
+        case "s-l": result_p.innerHTML = `Scissors decapitate lizard. You Win!`;
+            break;
+        case "l-p": result_p.innerHTML = `Lizard eats paper. You Win!`;
+            break;
+        case "p-sp": result_p.innerHTML = `Paper disproves Spock. You Win!`;
+            break;
+        case "sp-r": result_p.innerHTML = `Spock vaporizes Rock. You Win!`;
+            break;
+        case "r-s": result_p.innerHTML = `Rock crushes scissors. You Win!`;
+            break;
+
+        //user lose cases
+        case "p-s": result_p.innerHTML = `Scissors cut paper. You Lose!`;
+            break;
+        case "r-p": result_p.innerHTML = `Paper covers rock. You Lose!`;
+        break;
+        case "l-r": result_p.innerHTML = `Rock crushes lizard. You Lose!`;
+            break;
+        case "sp-l": result_p.innerHTML = `Lizard poisons Spock. You Lose!`;
+            break;
+        case "s-sp": result_p.innerHTML = `Spock smashes Scissors. You Lose!`;
+            break;
+        case "l-s": result_p.innerHTML = `Scissors decapitate lizard. You Lose!`;
+            break;
+        case "p-l": result_p.innerHTML = `Lizard eats paper. You Lose!`;
+            break;
+        case "sp-p": result_p.innerHTML = `Paper disproves Spock. You Lose!`;
+            break;
+        case "r-sp": result_p.innerHTML = `Spock vaporizes Rock. You Lose!`;
+            break;
+        case "s-r": result_p.innerHTML = `Rock crushes scissors. You Lose!`;
+            break;
+
+        //draw cases
+        case "s-s": 
+        case "p-p":
+        case "r-r":
+        case "l-l":
+        case "sp-sp":
+            result_p.innerHTML = `You both picked ${convertToWord(u)}. Draw!`;
+            break;
+    }
+
+}
 
 
 /** game(userChoice)
@@ -213,7 +277,7 @@ function game(userChoice) {
 
         //user lose cases
         case "p-s":
-        case "r-s":
+        case "r-p":
         case "l-r":
         case "sp-l":
         case "s-sp":
